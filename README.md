@@ -1,0 +1,2 @@
+# cognidocs-core
+Cognidocs Core
