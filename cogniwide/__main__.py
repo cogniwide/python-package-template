@@ -1,5 +1,5 @@
 import argparse
-from cogniwide.train import call_train, call_parse, call_predict
+from cogniwide.train import call_train , call_predict
 import logging
 logging.basicConfig()
 logging.root.setLevel(logging.DEBUG)
@@ -29,15 +29,6 @@ def create_argument_parser():
 
     subparsers = parser.add_subparsers(help="CogniDiscovery commands")
 
-
-    scaffold_parser = subparsers.add_parser(
-        "init",
-        parents=parent_parsers,
-        help="Creates a new project, with example training data, actions, and config files.",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
-    scaffold_parser.set_defaults(func=run)
-
     train_parser = subparsers.add_parser(
         "train",
         help="Trains a model",
@@ -50,16 +41,6 @@ def create_argument_parser():
 
     train_parser.set_defaults(func=call_train)
 
-
-    doc_parser = subparsers.add_parser(
-        "parse",
-        help="Trains a model",
-        parents=parent_parsers,
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
-    doc_parser.add_argument('-m', '--model_directory', default="models/", type=str, help='Model output directory')
-
-    doc_parser.set_defaults(func=call_parse)
 
     doc_parser = subparsers.add_parser(
         "predict",
